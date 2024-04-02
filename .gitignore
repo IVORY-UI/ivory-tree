@@ -1,0 +1,11 @@
+# System Cache
+.DS_Store
+
+# Angular Cache
+.angular
+
+# Node Dependencies
+node_modules
+
+# Package Lock
+package-lock.json
