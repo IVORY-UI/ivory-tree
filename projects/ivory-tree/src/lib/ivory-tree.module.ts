@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
 
 /* Components */
 import { IvoryTreeComponent } from './ivory-tree.component';
@@ -12,6 +13,7 @@ import { IvoryTreenodeComponent } from './ivory-treenode/ivory-treenode.componen
     IvoryTreenodeComponent
   ],
   imports: [
+    BrowserModule
   ],
   exports: [
     IvoryTreeComponent,

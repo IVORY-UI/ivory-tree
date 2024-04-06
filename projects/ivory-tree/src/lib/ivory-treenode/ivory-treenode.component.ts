@@ -1,13 +1,23 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ivory-treenode',
   templateUrl: './ivory-treenode.component.html',
   styleUrl: './ivory-treenode.component.scss'
 })
-export class IvoryTreenodeComponent {
+export class IvoryTreenodeComponent implements OnInit, OnDestroy {
 
-  private _title: any;
+  public _node: any;
+  public _title: any;
+
+  @Input() 
+  set node(value: any) {
+    this._node = value;
+    console.log('has children -> ', this._node.children);
+  }
+  get node() {
+    return this._node;
+  }
 
   @Input()
   set nodeTitle(value: any) {
@@ -19,11 +29,18 @@ export class IvoryTreenodeComponent {
 
   @Input() isNodeDisabled: boolean = false;
 
-  @Input() hasChildren: boolean = false;
-
   @Output() whenNodeSelect = new EventEmitter();
 
   @Output() whenNodeExpand = new EventEmitter();
 
+  constructor() {}
+
+  ngOnInit() {
+
+  }
+
+  ngOnDestroy(): void {
+    
+  }
 
 }
