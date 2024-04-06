@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 
+import { IvoryTreeFeaturesManager } from '../ivory-tree-features.service';
+
 @Component({
   selector: 'ivory-treenode',
   templateUrl: './ivory-treenode.component.html',
@@ -9,6 +11,7 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
 
   public _node: any;
   public _title: any;
+  public _selectable: boolean = false;
 
   @Input() 
   set node(value: any) {
@@ -33,10 +36,18 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
 
   @Output() whenNodeExpand = new EventEmitter();
 
-  constructor() {}
+  constructor(
+    public featureManager: IvoryTreeFeaturesManager
+  ) {}
 
   ngOnInit() {
+    this.featureManager.selectable.subscribe((value:boolean) => {
+      this._selectable = value;
+    });
+  }
 
+  nodeSelectionChange(event: Event) {
+    console.log('Selection event -> ', event);
   }
 
   ngOnDestroy(): void {

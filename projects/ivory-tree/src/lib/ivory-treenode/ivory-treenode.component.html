@@ -17,9 +17,18 @@
           </button>
         }
       </div>
-      <div class="ivory-treenode-select">
-    
-      </div>
+      @if (_selectable) {
+        <div class="ivory-treenode-select">
+          <input
+          type="checkbox"
+          class="node-checkbox"
+          [name]="node.name"
+          (change)="nodeSelectionChange($event)"
+          [(ngModel)]="node.isSelected"
+        />
+
+        </div>
+      }
       <div class="ivory-treenode-title">
         {{ node.name }}
       </div>

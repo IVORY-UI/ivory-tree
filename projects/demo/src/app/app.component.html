@@ -2,7 +2,7 @@
   <p>Demo: IVORY Tree</p>
 
   <ivory-tree
-    [hasNodeSelection]="enableTreeSelection"
+    [treeSelectable]="enableTreeSelection"
   >
     @for (item of treeData; track $index) {
       <ivory-treenode

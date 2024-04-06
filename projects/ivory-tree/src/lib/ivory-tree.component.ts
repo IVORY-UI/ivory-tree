@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
+import { IvoryTreeFeaturesManager } from './ivory-tree-features.service';
+
 @Component({
   selector: 'ivory-tree',
   templateUrl: './ivory-tree.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 })
 export class IvoryTreeComponent implements OnInit, OnDestroy {
 
-  @Input() hasNodeSelection: boolean = false;
+  @Input() 
+  set treeSelectable(value: boolean) {
+    this.featureManager.selectable = value;
+  }
 
-  constructor() {}
+  constructor(
+    public featureManager: IvoryTreeFeaturesManager
+  ) {}
 
   ngOnInit(): void {
     
