@@ -1,6 +1,6 @@
 {
   "name": "ivory-tree",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,16 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IVORY-UI/ivory-tree.git" 
+  },
+  "keywords": [
+    "angular",
+    "tree",
+    "treeview",
+    "component"
+  ],
   "dependencies": {
     "@angular/animations": "^17.0.0",
     "@angular/common": "^17.0.0",
