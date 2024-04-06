@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public enableTreeSelection = true;
-  public treeData = {
+  public treeData = [{
     name: 'Root',
     children: [
       {
@@ -25,6 +25,6 @@ export class AppComponent {
         ]
       }
     ]
-  };
+  }];
 
 }

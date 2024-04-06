@@ -1,20 +1,16 @@
 <div class="page-container">
-  <p>Demo</p>
+  <p>Demo: IVORY Tree</p>
 
   <ivory-tree
     [hasNodeSelection]="enableTreeSelection"
   >
-    <ivory-treenode 
-      [nodeTitle]="treeData.name"
-      [hasChildren]="treeData.children.length>0"
-    >
-    @for (item of treeData.children; track $index) {
+    @for (item of treeData; track $index) {
       <ivory-treenode
+        [node]="item"
         [nodeTitle]="item.name"
       >
       </ivory-treenode>
     }
-    </ivory-treenode>
   </ivory-tree>
 
 </div>
