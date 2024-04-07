@@ -1,3 +1,22 @@
 <div class="ivory-tree-container">
-  <ng-content></ng-content>
+  @if (treeData) {
+    <ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{ list: treeData }">
+    </ng-container>
+  }
 </div>
+
+<ng-template #ivoryTreeNodeTemplate let-list="list">
+  @for (item of list; track $index) {
+    <ivory-treenode
+      [node]="item"
+      [nodeTitle]="item[nodeTitleParam]"
+      [nodeSelectable]="treeSelectable"
+      [nodeExpanded]="treeExpanded"
+    >
+    @if (item && item.children && item.children.length > 0) {
+      <ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{ list: item.children }">
+      </ng-container>
+    }
+    </ivory-treenode>
+  }
+</ng-template>

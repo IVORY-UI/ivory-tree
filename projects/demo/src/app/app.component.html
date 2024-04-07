@@ -2,15 +2,11 @@
   <p>Demo: IVORY Tree</p>
 
   <ivory-tree
-    [treeSelectable]="enableTreeSelection"
+    [treeData]="treeData"
+    [treeSelectable]="true"
+    [treeExpanded]="true"
+    [nodeTitleParam]="'name'"
   >
-    @for (item of treeData; track $index) {
-      <ivory-treenode
-        [node]="item"
-        [nodeTitle]="item.name"
-      >
-      </ivory-treenode>
-    }
   </ivory-tree>
 
 </div>

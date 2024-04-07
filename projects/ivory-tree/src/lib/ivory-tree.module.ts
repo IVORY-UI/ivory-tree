@@ -6,9 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { IvoryTreeComponent } from './ivory-tree.component';
 import { IvoryTreenodeComponent } from './ivory-treenode/ivory-treenode.component';
 
-/* Services */
-import { IvoryTreeFeaturesManager } from './ivory-tree-features.service';
-
 @NgModule({
   declarations: [
     IvoryTreeComponent,
@@ -17,9 +14,6 @@ import { IvoryTreeFeaturesManager } from './ivory-tree-features.service';
   imports: [
     BrowserModule,
     FormsModule
-  ],
-  providers: [
-    IvoryTreeFeaturesManager 
   ],
   exports: [
     IvoryTreeComponent,

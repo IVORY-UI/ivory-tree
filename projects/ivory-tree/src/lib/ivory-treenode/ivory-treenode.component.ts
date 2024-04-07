@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 
-import { IvoryTreeFeaturesManager } from '../ivory-tree-features.service';
+import { UniqueIdGeneratorService } from '../providers/uniquegen.service';
 
 @Component({
   selector: 'ivory-treenode',
@@ -11,12 +11,12 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
 
   public _node: any;
   public _title: any;
-  public _selectable: boolean = false;
+  public _uniqueId: any;
+  public _expanded: boolean = false;
 
   @Input() 
   set node(value: any) {
     this._node = value;
-    console.log('has children -> ', this._node.children);
   }
   get node() {
     return this._node;
@@ -30,20 +30,23 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
     return this._title;
   }
 
-  @Input() isNodeDisabled: boolean = false;
+  @Input() nodeSelectable: boolean = false;
+
+  @Input() 
+  set nodeExpanded(value: boolean) {
+    this._expanded = value;
+  }
 
   @Output() whenNodeSelect = new EventEmitter();
 
-  @Output() whenNodeExpand = new EventEmitter();
-
   constructor(
-    public featureManager: IvoryTreeFeaturesManager
-  ) {}
+    public uniqueIdService: UniqueIdGeneratorService
+  ) {
+    this._uniqueId = this.uniqueIdService.getUniqueId();
+  }
 
   ngOnInit() {
-    this.featureManager.selectable.subscribe((value:boolean) => {
-      this._selectable = value;
-    });
+    
   }
 
   nodeSelectionChange(event: Event) {

@@ -1,46 +1,42 @@
-
-<ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{node:_node}">
-</ng-container>
-
-<ng-template #ivoryTreeNodeTemplate let-node="node">
-  <div class="ivory-treenode">
-    <div class="ivory-treenode-content">
-      <div class="ivory-treenode-expand">
-        @if (node.children && node.children.length>0) {
-          <button (click)="node.collapsed=!node.collapsed;">
-            @if (!node.collapsed) {
-              <div class="ivory-icon-expand"></div>
-            }
-            @else {
-              <div class="ivory-icon-collapse"></div>
-            }
-          </button>
-        }
-      </div>
-      @if (_selectable) {
-        <div class="ivory-treenode-select">
-          <input
+<div class="ivory-treenode">
+  <div class="ivory-treenode-content">
+    <div class="ivory-treenode-expand">
+      @if (node.children && node.children.length>0) {
+        <button (click)="_expanded=!_expanded">
+          @if (!_expanded) {
+            <div class="ivory-icon-collapse"></div>
+          }
+          @else {
+            <div class="ivory-icon-expand"></div>
+          }
+        </button>
+      }
+    </div>
+    <div class="ivory-treenode-title">
+      @if (nodeSelectable) {
+        <input
           type="checkbox"
+          id="{{_uniqueId}}"
           class="node-checkbox"
           [name]="node.name"
           (change)="nodeSelectionChange($event)"
           [(ngModel)]="node.isSelected"
         />
-
-        </div>
+        <label for="{{_uniqueId}}">
+          {{ node.name }}
+        </label>
       }
-      <div class="ivory-treenode-title">
-        {{ node.name }}
-      </div>
+      @else {
+        <span>
+          {{ node.name }}
+        </span>
+      }
     </div>
-    
-    @if (!node.collapsed) {
-      <div class="ivory-treenode-children">
-        @for (child of node.children; track $index) {
-          <ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{node:child}">
-          </ng-container>
-        }
-      </div>
-    }
   </div>
-</ng-template>
+  
+  @if (_expanded) {
+    <div class="ivory-treenode-children">
+      <ng-content></ng-content>
+    </div>
+  }
+</div>
