@@ -11,7 +11,8 @@
       [node]="item"
       [nodeTitle]="item[nodeTitleParam]"
       [nodeSelectable]="treeSelectable"
-      [nodeExpanded]="treeExpanded"
+      [nodeExpanded]="expandByDefault"
+      (whenNodeSelect)="nodeSelectionChange($event)"
     >
     @if (item && item.children && item.children.length > 0) {
       <ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{ list: item.children }">

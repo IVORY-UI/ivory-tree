@@ -38,6 +38,9 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
   }
 
   @Output() whenNodeSelect = new EventEmitter();
+  public emitNodeSelection(status: any): void {
+    this.whenNodeSelect.emit(this._node);
+  }
 
   constructor(
     public uniqueIdService: UniqueIdGeneratorService
@@ -49,8 +52,20 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
     
   }
 
-  nodeSelectionChange(event: Event) {
-    console.log('Selection event -> ', event);
+  nodeSelectionChange(event: any) {
+    event.stopPropagation();
+    this._node.isSelected = event.target.checked;
+    if (this._node.children && this._node.children.length>0) {
+      this.impactChildrenSelection();
+    }
+    this.emitNodeSelection(event.target.checked);
+    
+  }
+
+  impactChildrenSelection() {
+    for (let i=0; i<this._node.children.length; i++) {
+      this._node.children[i]['isSelected'] = this._node.isSelected;
+    }
   }
 
   ngOnDestroy(): void {
