@@ -3,10 +3,10 @@
     display: flex;
     flex: 1 1 auto;
     align-items: center;
-    border-radius: .125rem 0 0 .125rem;
     line-height: 2rem;
     &:hover {
-      background-color: #EDEDED;
+      background-color: #F1F3F5;
+      border-radius: 0.25rem;
     }
   }
   &-expand {
