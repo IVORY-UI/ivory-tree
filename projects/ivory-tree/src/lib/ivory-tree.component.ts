@@ -7,11 +7,13 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 })
 export class IvoryTreeComponent implements OnInit, OnDestroy {
 
+  @Input() treeRecursive: boolean = false;
+
   @Input() treeData: any;
 
   @Input() treeSelectable: boolean = false;
 
-  @Input() expandByDefault: boolean = false;
+  @Input() treeExpandByDefault: boolean = false;
 
   @Input() nodeTitleParam: string = '';
 

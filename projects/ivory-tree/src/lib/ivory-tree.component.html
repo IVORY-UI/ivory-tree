@@ -1,23 +1,31 @@
 <div class="ivory-tree-container">
-  @if (treeData) {
-    <ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{ list: treeData }">
-    </ng-container>
-  }
-</div>
-
-<ng-template #ivoryTreeNodeTemplate let-list="list">
-  @for (item of list; track $index) {
-    <ivory-treenode
-      [node]="item"
-      [nodeTitle]="item[nodeTitleParam]"
-      [nodeSelectable]="treeSelectable"
-      [nodeExpanded]="expandByDefault"
-      (whenNodeSelect)="nodeSelectionChange($event)"
-    >
-    @if (item && item.children && item.children.length > 0) {
-      <ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{ list: item.children }">
+  
+  @if (treeRecursive) {
+    <!-- If the tree is a recursive -->
+    @if (treeData) {
+      <ng-container *ngTemplateOutlet="ivoryRecursiveTemplate; context:{ list: treeData }">
       </ng-container>
     }
-    </ivory-treenode>
+    
+    <ng-template #ivoryRecursiveTemplate let-list="list">
+      @for (item of list; track $index) {
+        <ivory-recursivenode
+          [node]="item"
+          [nodeTitle]="item[nodeTitleParam]"
+          [nodeSelectable]="treeSelectable"
+          [nodeExpanded]="treeExpandByDefault"
+          (whenNodeSelect)="nodeSelectionChange($event)"
+        >
+        @if (item && item.children && item.children.length > 0) {
+          <ng-container *ngTemplateOutlet="ivoryRecursiveTemplate; context:{ list: item.children }">
+          </ng-container>
+        }
+        </ivory-recursivenode>
+      }
+    </ng-template>
   }
-</ng-template>
+  @else {
+    <!-- If the tree is a non-recursive -->
+    <ng-content></ng-content>
+  }  
+</div>

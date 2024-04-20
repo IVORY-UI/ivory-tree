@@ -1,18 +1,15 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-
-import { UniqueIdGeneratorService } from '../providers/uniquegen.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ivory-treenode',
   templateUrl: './ivory-treenode.component.html',
-  styleUrl: './ivory-treenode.component.scss'
+  styleUrls: ['../styles/ivory-node.scss']
 })
-export class IvoryTreenodeComponent implements OnInit, OnDestroy {
+export class IvoryTreenodeComponent {
 
   public _node: any;
   public _title: any;
-  public _uniqueId: any;
-  public _expanded: boolean = false;
+  public _isExpanded:boolean = false;
 
   @Input() 
   set node(value: any) {
@@ -22,6 +19,13 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
     return this._node;
   }
 
+ @Input() 
+ set nodeExpanded(value: any) {
+  this._isExpanded = value;
+ }
+
+  @Input() nodeHasChildren: boolean = false;
+
   @Input()
   set nodeTitle(value: any) {
     this._title = value;
@@ -30,46 +34,11 @@ export class IvoryTreenodeComponent implements OnInit, OnDestroy {
     return this._title;
   }
 
-  @Input() nodeSelectable: boolean = false;
-
-  @Input() 
-  set nodeExpanded(value: boolean) {
-    this._expanded = value;
-  }
+  @Input() isNodeDisabled: boolean = false;
 
   @Output() whenNodeSelect = new EventEmitter();
-  public emitNodeSelection(status: any): void {
-    this.whenNodeSelect.emit(this._node);
-  }
 
-  constructor(
-    public uniqueIdService: UniqueIdGeneratorService
-  ) {
-    this._uniqueId = this.uniqueIdService.getUniqueId();
-  }
+  @Output() whenNodeExpand = new EventEmitter();
 
-  ngOnInit() {
-    
-  }
-
-  nodeSelectionChange(event: any) {
-    event.stopPropagation();
-    this._node.isSelected = event.target.checked;
-    if (this._node.children && this._node.children.length>0) {
-      this.impactChildrenSelection();
-    }
-    this.emitNodeSelection(event.target.checked);
-    
-  }
-
-  impactChildrenSelection() {
-    for (let i=0; i<this._node.children.length; i++) {
-      this._node.children[i]['isSelected'] = this._node.isSelected;
-    }
-  }
-
-  ngOnDestroy(): void {
-    
-  }
 
 }

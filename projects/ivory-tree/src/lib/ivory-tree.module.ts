@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 /* Components */
 import { IvoryTreeComponent } from './ivory-tree.component';
 import { IvoryTreenodeComponent } from './ivory-treenode/ivory-treenode.component';
+import { IvoryRecursivenodeComponent } from './ivory-recursivenode/ivory-recursivenode.component';
 
 @NgModule({
   declarations: [
     IvoryTreeComponent,
-    IvoryTreenodeComponent
+    IvoryTreenodeComponent,
+    IvoryRecursivenodeComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +19,8 @@ import { IvoryTreenodeComponent } from './ivory-treenode/ivory-treenode.componen
   ],
   exports: [
     IvoryTreeComponent,
-    IvoryTreenodeComponent
+    IvoryTreenodeComponent,
+    IvoryRecursivenodeComponent
   ]
 })
 export class IvoryTreeModule { }

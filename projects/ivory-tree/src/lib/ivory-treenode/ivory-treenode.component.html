@@ -1,9 +1,9 @@
-<div class="ivory-treenode">
-  <div class="ivory-treenode-content">
-    <div class="ivory-treenode-expand">
-      @if (node.children && node.children.length>0) {
-        <button (click)="_expanded=!_expanded">
-          @if (!_expanded) {
+<div class="ivory-node">
+  <div class="ivory-node-content">
+    <div class="ivory-node-expand">
+      @if (nodeHasChildren) {
+        <button (click)="_isExpanded=!_isExpanded">
+          @if (!_isExpanded) {
             <div class="ivory-icon-collapse"></div>
           }
           @else {
@@ -12,30 +12,12 @@
         </button>
       }
     </div>
-    <div class="ivory-treenode-title">
-      @if (nodeSelectable) {
-        <input
-          type="checkbox"
-          id="{{_uniqueId}}"
-          class="node-checkbox"
-          [name]="node.name"
-          (change)="nodeSelectionChange($event)"
-          [(ngModel)]="node.isSelected"
-        />
-        <label for="{{_uniqueId}}">
-          {{ node.name }}
-        </label>
-      }
-      @else {
-        <span>
-          {{ node.name }}
-        </span>
-      }
+    <div class="ivory-node-title">
+      {{ _title }}
     </div>
   </div>
-  
-  @if (_expanded) {
-    <div class="ivory-treenode-children">
+  @if (nodeHasChildren && _isExpanded) {
+    <div class="ivory-node-children">
       <ng-content></ng-content>
     </div>
   }
