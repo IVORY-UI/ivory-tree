@@ -1,6 +1,16 @@
 {
   "name": "ivoryui-tree",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IVORY-UI/ivory-tree.git"
+  },
+  "keywords": [
+    "angular",
+    "tree",
+    "treeview",
+    "component"
+  ],
   "peerDependencies": {
     "@angular/common": "^17.3.0",
     "@angular/core": "^17.3.0"

@@ -1,37 +1,24 @@
-
-<ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{node:_node}">
-</ng-container>
-
-<ng-template #ivoryTreeNodeTemplate let-node="node">
-  <div class="ivory-treenode">
-    <div class="ivory-treenode-content">
-      <div class="ivory-treenode-expand">
-        @if (node.children && node.children.length>0) {
-          <button (click)="node.collapsed=!node.collapsed;">
-            @if (!node.collapsed) {
-              <div class="ivory-icon-expand"></div>
-            }
-            @else {
-              <div class="ivory-icon-collapse"></div>
-            }
-          </button>
-        }
-      </div>
-      <div class="ivory-treenode-select">
-    
-      </div>
-      <div class="ivory-treenode-title">
-        {{ node.name }}
-      </div>
+<div class="ivory-node">
+  <div class="ivory-node-content">
+    <div class="ivory-node-expand">
+      @if (nodeHasChildren) {
+        <button (click)="_isExpanded=!_isExpanded">
+          @if (!_isExpanded) {
+            <div class="ivory-icon-collapse"></div>
+          }
+          @else {
+            <div class="ivory-icon-expand"></div>
+          }
+        </button>
+      }
     </div>
-    
-    @if (!node.collapsed) {
-      <div class="ivory-treenode-children">
-        @for (child of node.children; track $index) {
-          <ng-container *ngTemplateOutlet="ivoryTreeNodeTemplate; context:{node:child}">
-          </ng-container>
-        }
-      </div>
-    }
+    <div class="ivory-node-title">
+      {{ _title }}
+    </div>
   </div>
-</ng-template>
+  @if (nodeHasChildren && _isExpanded) {
+    <div class="ivory-node-children">
+      <ng-content></ng-content>
+    </div>
+  }
+</div>

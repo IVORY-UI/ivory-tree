@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  public enableTreeSelection = true;
   public treeData = [{
     name: 'Root',
     children: [

@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms';
 
 /* Components */
 import { IvoryTreeComponent } from './ivory-tree.component';
 import { IvoryTreenodeComponent } from './ivory-treenode/ivory-treenode.component';
-
-/* Directives */
+import { IvoryRecursivenodeComponent } from './ivory-recursivenode/ivory-recursivenode.component';
 
 @NgModule({
   declarations: [
     IvoryTreeComponent,
-    IvoryTreenodeComponent
+    IvoryTreenodeComponent,
+    IvoryRecursivenodeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   exports: [
     IvoryTreeComponent,
-    IvoryTreenodeComponent
+    IvoryTreenodeComponent,
+    IvoryRecursivenodeComponent
   ]
 })
 export class IvoryTreeModule { }
