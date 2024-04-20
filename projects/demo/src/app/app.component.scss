@@ -5,8 +5,24 @@
   font-size: 14px;
   .inner {
     display: flex;
-    section {
-      width: 50%;
+    flex-direction: column;
+    .code-example {
+      display: flex;
+      flex-direction: row;
+      .half {
+        width: 50%;
+      }
+    }
+    pre {
+      font-family: 'Fira Code', monospace;
+      background-color: var(--iv-gray-8);
+      color: var(--iv-gray-3);
+      padding: 5px;
+      font-size: 0.815rem;
+      line-height: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 0.25rem;
+      overflow: scroll;
     }
   }
 }
