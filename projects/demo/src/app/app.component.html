@@ -1,10 +1,10 @@
 <div class="page-container">
-  
+
   <div class="inner">
 
-    <h2>Example: Simple Tree</h2>
-    <div class="code-example">
-      <div class="half">
+    <h3>Example: Simple Tree</h3>
+    <div class="row">
+      <div class="col">
         <ivory-tree>
           @for (item of treeData; track $index) {
             <ivory-treenode
@@ -32,7 +32,7 @@
           }
         </ivory-tree>
       </div>
-      <div class="half">
+      <div class="col">
         <pre>
           <code>
             &lt;ivory-tree&gt;
@@ -66,9 +66,9 @@
       </div>
     </div>
     
-    <h2>Example: Recursive Tree</h2>
-    <div class="code-example">
-      <div class="half">
+    <h3>Example: Recursive Tree</h3>
+    <div class="row">
+      <div class="col">
         <ivory-tree
           [treeRecursive]="true"
           [treeData]="treeData"
@@ -78,7 +78,7 @@
         >
         </ivory-tree>
       </div>
-      <div class="half">
+      <div class="col">
         <pre>
           <code>
             &lt;ivory-tree

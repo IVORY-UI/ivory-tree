@@ -1,12 +1,10 @@
 <div class="ivory-tree-container">
-  
   @if (treeRecursive) {
     <!-- If the tree is a recursive -->
     @if (treeData) {
       <ng-container *ngTemplateOutlet="ivoryRecursiveTemplate; context:{ list: treeData }">
       </ng-container>
     }
-    
     <ng-template #ivoryRecursiveTemplate let-list="list">
       @for (item of list; track $index) {
         <ivory-recursivenode

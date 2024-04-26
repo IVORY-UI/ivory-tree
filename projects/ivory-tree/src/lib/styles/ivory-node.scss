@@ -1,3 +1,5 @@
+@import './properties';
+
 .ivory-node {
   &-content {
     display: flex;
@@ -5,7 +7,7 @@
     align-items: center;
     line-height: 2rem;
     &:hover {
-      background-color: #F1F3F5;
+      background-color: $ivory-node-hover-bg-color;
       border-radius: 0.25rem;
     }
   }
@@ -19,7 +21,6 @@
     margin: 0;
     height: 2rem;
     width: 2rem;
-    color: #999;
     button {
       border: none;
       background: none;
@@ -30,6 +31,9 @@
       cursor: pointer;
     }
   }
+  &-title {
+    color: $ivory-node-title-color;
+  }
   &-children {
     margin-left: 2rem;
   }
@@ -39,12 +43,12 @@
   height: 0;
   border-left: 0.25rem solid transparent;
   border-right: 0.25rem solid transparent;
-  border-top: 0.4rem solid #000000;
+  border-top: 0.4rem solid $ivory-node-expand-icon-color;
 }
 .ivory-icon-collapse {
   width: 0;
   height: 0;
   border-top: 0.25rem solid transparent;
-  border-left: 0.4rem solid #000000;
+  border-left: 0.4rem solid $ivory-node-expand-icon-color;
   border-bottom: 0.25rem solid transparent;
 }
