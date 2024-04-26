@@ -13,7 +13,7 @@
       }
     </div>
     <div class="ivory-node-title">
-      {{ _title }}
+      <ng-content select="[title]"></ng-content>
     </div>
   </div>
   @if (nodeHasChildren && _isExpanded) {

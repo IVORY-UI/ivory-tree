@@ -16,7 +16,7 @@ export class IvoryTreeComponent implements OnInit, OnDestroy {
 
   @Input() treeData: any;
 
-  @Input() treeSelectable: boolean = false;
+  @Input() treeNodeSelection: boolean = false;
 
   @Input() treeExpandByDefault: boolean = false;
 
