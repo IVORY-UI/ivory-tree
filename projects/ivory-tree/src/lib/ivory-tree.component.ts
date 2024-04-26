@@ -3,7 +3,12 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 @Component({
   selector: 'ivory-tree',
   templateUrl: './ivory-tree.component.html',
-  styleUrl: './ivory-tree.component.scss'
+  styles: `
+    .ivory-tree-container {
+      display: flex;
+      flex-direction: column;
+    }
+  `
 })
 export class IvoryTreeComponent implements OnInit, OnDestroy {
 
@@ -11,7 +16,7 @@ export class IvoryTreeComponent implements OnInit, OnDestroy {
 
   @Input() treeData: any;
 
-  @Input() treeSelectable: boolean = false;
+  @Input() treeNodeSelection: boolean = false;
 
   @Input() treeExpandByDefault: boolean = false;
 

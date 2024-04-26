@@ -3,7 +3,7 @@ import * as i0 from "@angular/core";
 export declare class IvoryTreeComponent implements OnInit, OnDestroy {
     treeRecursive: boolean;
     treeData: any;
-    treeSelectable: boolean;
+    treeNodeSelection: boolean;
     treeExpandByDefault: boolean;
     nodeTitleParam: string;
     constructor();
@@ -21,5 +21,5 @@ export declare class IvoryTreeComponent implements OnInit, OnDestroy {
     updateStack(source: any): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<IvoryTreeComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<IvoryTreeComponent, "ivory-tree", never, { "treeRecursive": { "alias": "treeRecursive"; "required": false; }; "treeData": { "alias": "treeData"; "required": false; }; "treeSelectable": { "alias": "treeSelectable"; "required": false; }; "treeExpandByDefault": { "alias": "treeExpandByDefault"; "required": false; }; "nodeTitleParam": { "alias": "nodeTitleParam"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<IvoryTreeComponent, "ivory-tree", never, { "treeRecursive": { "alias": "treeRecursive"; "required": false; }; "treeData": { "alias": "treeData"; "required": false; }; "treeNodeSelection": { "alias": "treeNodeSelection"; "required": false; }; "treeExpandByDefault": { "alias": "treeExpandByDefault"; "required": false; }; "nodeTitleParam": { "alias": "nodeTitleParam"; "required": false; }; }, {}, never, ["*"], false, never>;
 }

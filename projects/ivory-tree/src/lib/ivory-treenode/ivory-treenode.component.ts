@@ -8,7 +8,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class IvoryTreenodeComponent {
 
   public _node: any;
-  public _title: any;
   public _isExpanded:boolean = false;
 
   @Input() 
@@ -25,14 +24,6 @@ export class IvoryTreenodeComponent {
  }
 
   @Input() nodeHasChildren: boolean = false;
-
-  @Input()
-  set nodeTitle(value: any) {
-    this._title = value;
-  }
-  get nodeTitle() {
-    return this._title;
-  }
 
   @Input() isNodeDisabled: boolean = false;
 

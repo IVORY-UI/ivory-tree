@@ -1,30 +1,37 @@
 <div class="page-container">
-  
+
   <div class="inner">
 
-    <h2>Example: Simple Tree</h2>
-    <div class="code-example">
-      <div class="half">
+    <h3>Example: Simple Tree</h3>
+    <div class="row">
+      <div class="col">
         <ivory-tree>
           @for (item of treeData; track $index) {
             <ivory-treenode
               [node]="item"
-              [nodeTitle]="item.name"
               [nodeHasChildren]="item.children.length>0"
               [nodeExpanded]="true"
             >
+              <ng-container title>
+                {{item.name}}
+              </ng-container>
               @for (childItem of item.children; track $index) {
                 <ivory-treenode
                   [node]="childItem"
                   [nodeHasChildren]="childItem.children.length>0"
-                  [nodeTitle]="childItem.name"
                   [nodeExpanded]="true"
                 >
+                  <ng-container title>
+                    {{childItem.name}}
+                  </ng-container>
                   @for (grandchildItem of childItem.children; track $index) {
                     <ivory-treenode
                       [node]="grandchildItem"
-                      [nodeTitle]="grandchildItem.name"
-                    ></ivory-treenode>
+                    >
+                      <ng-container title>
+                        {{grandchildItem.name}}
+                      </ng-container>
+                    </ivory-treenode>
                   }
                 </ivory-treenode>
               }
@@ -32,63 +39,31 @@
           }
         </ivory-tree>
       </div>
-      <div class="half">
+      <div class="col">
         <pre>
           <code>
-            &lt;ivory-tree&gt;
-              &amp;for (item of treeData; track $index) &#123;
-                &lt;ivory-treenode
-                  [node]="item"
-                  [nodeTitle]="item.name"
-                  [nodeHasChildren]="item.children.length>0"
-                  [nodeExpanded]="true"
-                &gt;
-                  &amp;for (childItem of item.children; track $index) &#123;
-                    &lt;ivory-treenode
-                      [node]="childItem"
-                      [nodeHasChildren]="childItem.children.length>0"
-                      [nodeTitle]="childItem.name"
-                      [nodeExpanded]="true"
-                    &gt;
-                      &amp;for (grandchildItem of childItem.children; track $index) &#123;
-                        &lt;ivory-treenode
-                          [node]="grandchildItem"
-                          [nodeTitle]="grandchildItem.name"
-                        &gt;&lt;/ivory-treenode&gt;
-                      &#125;
-                    &lt;/ivory-treenode&gt;
-                  &#125;
-                &lt;/ivory-treenode&gt;
-              &#125;
-            &lt;/ivory-tree&gt;
+            {{snippet1}}
           </code>
         </pre>
       </div>
     </div>
     
-    <h2>Example: Recursive Tree</h2>
-    <div class="code-example">
-      <div class="half">
+    <h3>Example: Recursive Tree</h3>
+    <div class="row">
+      <div class="col">
         <ivory-tree
           [treeRecursive]="true"
           [treeData]="treeData"
-          [treeSelectable]="false"
+          [treeNodeSelection]="false"
           [treeExpandByDefault]="true"
           [nodeTitleParam]="'name'"
         >
         </ivory-tree>
       </div>
-      <div class="half">
+      <div class="col">
         <pre>
           <code>
-            &lt;ivory-tree
-              [treeRecursive]="true"
-              [treeData]="treeData"
-              [treeSelectable]="false"
-              [treeExpandByDefault]="true"
-              [nodeTitleParam]="'name'"
-            &gt;
-            &lt;/ivory-tree&gt;
+            {{snippet2}}
           </code>
         </pre>
       </div>

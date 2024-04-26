@@ -26,4 +26,51 @@ export class AppComponent {
     ]
   }];
 
+  public snippet1: string = `
+  <ivory-tree>
+    @for (item of treeData; track $index) {
+      <ivory-treenode
+        [node]="item"
+        [nodeHasChildren]="item.children.length>0"
+        [nodeExpanded]="true"
+      >
+        <ng-container title>
+          {{item.name}}
+        </ng-container>
+        @for (childItem of item.children; track $index) {
+          <ivory-treenode
+            [node]="childItem"
+            [nodeHasChildren]="childItem.children.length>0"
+            [nodeExpanded]="true"
+          >
+            <ng-container title>
+              {{childItem.name}}
+            </ng-container>
+            @for (grandchildItem of childItem.children; track $index) {
+              <ivory-treenode
+                [node]="grandchildItem"
+              >
+                <ng-container title>
+                  {{grandchildItem.name}}
+                </ng-container>
+              </ivory-treenode>
+            }
+          </ivory-treenode>
+        }
+      </ivory-treenode>
+    }
+  </ivory-tree>
+  `;
+
+  public snippet2 = `
+  <ivory-tree
+    [treeRecursive]="true"
+    [treeData]="treeData"
+    [treeNodeSelection]="false"
+    [treeExpandByDefault]="true"
+    [nodeTitleParam]="'name'"
+  >
+  </ivory-tree>
+  `;
+
 }

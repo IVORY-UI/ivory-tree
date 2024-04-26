@@ -6,13 +6,6 @@
   .inner {
     display: flex;
     flex-direction: column;
-    .code-example {
-      display: flex;
-      flex-direction: row;
-      .half {
-        width: 50%;
-      }
-    }
     pre {
       font-family: 'Fira Code', monospace;
       background-color: var(--iv-gray-8);
